@@ -22,8 +22,6 @@ public class NetworkControllerScript : MonoBehaviour {
 
 	private bool refreshing = false;
 
-	private bool objectCreated = false;
-
 	private HostData[] AvailableGames = new HostData[0];
 
 	public void CreateGame()
@@ -53,7 +51,12 @@ public class NetworkControllerScript : MonoBehaviour {
 	public void OnServerInitialized()
 	{
 		InstantiatePlayerObject();
-		this.objectCreated = true;
+	}
+
+	// message
+	public void OnConnectedToServer()
+	{
+		InstantiatePlayerObject();
 	}
 
 	public void InstantiatePlayerObject()
@@ -95,12 +98,6 @@ public class NetworkControllerScript : MonoBehaviour {
 					Network.Connect (this.AvailableGames[i]);
 				}
 			}
-		}
-
-		if(Network.isClient && !this.objectCreated)
-		{
-			objectCreated = true;
-			InstantiatePlayerObject();
 		}
 	}
 }
