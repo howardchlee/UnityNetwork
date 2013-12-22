@@ -11,15 +11,15 @@ Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Man
 Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.045 seconds
+- Completed reload, in  0.047 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Server Created!
+Player(Clone) (UnityEngine.GameObject) playerObject(Clone) (UnityEngine.GameObject)
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-Registered Server!
+Server Created!
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 

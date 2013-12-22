@@ -18,8 +18,11 @@ public class NetworkControllerScript : MonoBehaviour {
 	public string GameTypeName = "howardchlee_unique_gamestring";
 
 	public GameObject prefab;
+	public GameObject playerPrefab;
 
 	private bool refreshing = false;
+
+	private bool objectCreated = false;
 
 	private HostData[] AvailableGames = new HostData[0];
 
@@ -50,14 +53,15 @@ public class NetworkControllerScript : MonoBehaviour {
 	public void OnServerInitialized()
 	{
 		InstantiatePlayerObject();
+		this.objectCreated = true;
 	}
 
 	public void InstantiatePlayerObject()
 	{
-		GameObject newPlayer = new GameObject();
-		newPlayer.AddComponent<PlayerScript>();
-		newPlayer.name = "Player";
+		GameObject newPlayer = (GameObject) Network.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity, 0);
 		GameObject newPlayerObject = (GameObject) Network.Instantiate(prefab, prefab.transform.position, Quaternion.identity, 0);
+		Debug.Log (newPlayer.ToString() + " " + newPlayerObject.ToString ());
+
 		newPlayer.GetComponent<PlayerScript>().setPlayerObject(newPlayerObject);
 	}
 
@@ -89,11 +93,14 @@ public class NetworkControllerScript : MonoBehaviour {
 				if(GUI.Button (new Rect(20, 110 + i*50, 150, 40), this.AvailableGames[i].gameName))
 				{
 					Network.Connect (this.AvailableGames[i]);
-					GameObject g = (GameObject)Network.Instantiate(prefab, new Vector3(10, 10, -0.5f), Quaternion.identity, 0);
-					Debug.Log(g.ToString ());
-					//InstantiatePlayerObject();
 				}
 			}
+		}
+
+		if(Network.isClient && !this.objectCreated)
+		{
+			objectCreated = true;
+			InstantiatePlayerObject();
 		}
 	}
 }
