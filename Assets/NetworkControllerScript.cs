@@ -58,6 +58,7 @@ public class NetworkControllerScript : MonoBehaviour {
 	{
 		InstantiatePlayerObject();
 	}
+	
 
 	public void InstantiatePlayerObject()
 	{
@@ -70,6 +71,11 @@ public class NetworkControllerScript : MonoBehaviour {
 
 	public void OnGUI()
 	{
+		if(Network.isServer)
+		{
+			GUI.Box (new Rect(10, 10, 80, 40), Network.connections.Length.ToString());
+		}
+
 		if(!Network.isClient && !Network.isServer)
 		{
 			if(GUI.Button(new Rect(10, 10, 120, 40), "New Game"))
