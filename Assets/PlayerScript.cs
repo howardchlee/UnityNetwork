@@ -11,8 +11,20 @@ public class PlayerScript : MonoBehaviour {
 
 	}
 
-
+	public int health = 100;
 	public string s = "";
+
+	public Texture2D progressBarBg;
+	public Texture2D progressBarFull;
+
+	void OnGUI()
+	{
+		Vector3 worldPos = new Vector3(this.playerObject.transform.position.x, this.playerObject.transform.position.y, -0.5f);
+		Vector3 healthBarPos = Camera.current.WorldToScreenPoint(worldPos);
+		Debug.Log (healthBarPos.ToString());
+		GUI.Box (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f, 16.0f), progressBarBg);
+		GUI.Box (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f * health / 100.0f, 16.0f), progressBarFull);
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -51,9 +63,9 @@ public class PlayerScript : MonoBehaviour {
 
 		if(Network.isServer)
 		{
-			if(playerObject.transform.position.y < 1.5f)
+			if(playerObject.transform.position.y < 2.5f)
 			{
-				playerObject.transform.position = new Vector3(playerObject.transform.position.x, 1.5f, -0.5f);
+				playerObject.transform.position = new Vector3(playerObject.transform.position.x, 2.5f, -0.5f);
 			}
 			else if(playerObject.transform.position.y > 11f)
 			{
@@ -66,9 +78,9 @@ public class PlayerScript : MonoBehaviour {
 			{
 				playerObject.transform.position = new Vector3(playerObject.transform.position.x, -11, -0.5f);
 			}
-			else if(playerObject.transform.position.y > -1.5f)
+			else if(playerObject.transform.position.y > -2.5f)
 			{
-				playerObject.transform.position = new Vector3(playerObject.transform.position.x, -1.5f, -0.5f);;
+				playerObject.transform.position = new Vector3(playerObject.transform.position.x, -2.5f, -0.5f);;
 			}
 		}
 
