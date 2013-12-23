@@ -24,6 +24,8 @@ public class NetworkControllerScript : MonoBehaviour {
 
 	private HostData[] AvailableGames = new HostData[0];
 
+	private PlayerScript thisPlayer;
+
 	public void CreateGame()
 	{
 		Network.InitializeServer (this.MaxConnections, this.Port, !Network.HavePublicAddress());
@@ -67,6 +69,7 @@ public class NetworkControllerScript : MonoBehaviour {
 		Debug.Log (newPlayer.ToString() + " " + newPlayerObject.ToString ());
 
 		newPlayer.GetComponent<PlayerScript>().setPlayerObject(newPlayerObject);
+		this.thisPlayer = newPlayer.GetComponent<PlayerScript>();
 	}
 
 	public void OnGUI()
@@ -104,6 +107,10 @@ public class NetworkControllerScript : MonoBehaviour {
 					Network.Connect (this.AvailableGames[i]);
 				}
 			}
+		}
+		else
+		{
+			GUI.Box(new Rect(10, 10, 120, 40), this.thisPlayer.s);
 		}
 	}
 }

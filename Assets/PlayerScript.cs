@@ -3,19 +3,21 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	private GameObject playerObject = null;
+	public GameObject playerObject = null;
 	private bool inPlay = false;
 
 	// Use this for initialization
 	void Start () {
 
 	}
-
+	
 	public void setPlayerObject(GameObject playerObject)
 	{
 		this.playerObject = playerObject;
 		this.inPlay = true;
 	}
+
+	public string s = "";
 
 	// Update is called once per frame
 	void Update () {
@@ -61,6 +63,15 @@ public class PlayerScript : MonoBehaviour {
 			playerObject.transform.position = new Vector3(playerObject.transform.position.x, 11f, -0.5f);;
 		}
 
+		if(Input.GetKey (KeyCode.F))
+		{
+			this.playerObject.GetComponent<PlayerObjectScript>().PublicChangeColor(0f, 1f, 0f);
+		}
+
 
 	}
+
+
 }
+
+

@@ -1,11 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NetworkControllerScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerObjectScript.cs">
     <Files>
-      <File FileName="Assets\NetworkControllerScript.cs" Line="76" Column="78" />
-      <File FileName="Assets\PlayerScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\NetworkControllerScript.cs" Line="76" Column="78" />
+      <File FileName="Assets\NetworkControllerScript.cs" Line="73" Column="3" />
+      <File FileName="Assets\PlayerScript.cs" Line="72" Column="1" />
+      <File FileName="Assets\PlayerObjectScript.cs" Line="20" Column="5" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="PlayerObjectScript.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
