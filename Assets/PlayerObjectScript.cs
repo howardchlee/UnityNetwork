@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerObjectScript : MonoBehaviour {
 
+	public PlayerScript player = null;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,15 +15,14 @@ public class PlayerObjectScript : MonoBehaviour {
 	
 	}
 
-	public void PublicChangeColor(float r, float g, float b)
+	public void AssignPlayer(NetworkViewID vid)
 	{
-		networkView.RPC ("ChangeColor", RPCMode.AllBuffered, r, g, b);
+		this.networkView.RPC ("AssignPlayerRPC", RPCMode.AllBuffered, vid);
 	}
 
 	[RPC]
-	void ChangeColor(float r, float g, float b)
+	public void AssignPlayerRPC(NetworkViewID vid)
 	{
-		//networkView.renderer.material.color = new Color(r, g, b);
-		this.renderer.material.color = new Color(r, g, b);
+		this.player = NetworkView.Find (vid).gameObject.GetComponent<PlayerScript>();
 	}
 }

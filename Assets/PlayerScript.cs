@@ -10,12 +10,7 @@ public class PlayerScript : MonoBehaviour {
 	void Start () {
 
 	}
-	
-	public void setPlayerObject(GameObject playerObject)
-	{
-		this.playerObject = playerObject;
-		this.inPlay = true;
-	}
+
 
 	public string s = "";
 
@@ -65,13 +60,32 @@ public class PlayerScript : MonoBehaviour {
 
 		if(Input.GetKey (KeyCode.F))
 		{
-			this.playerObject.GetComponent<PlayerObjectScript>().PublicChangeColor(0f, 1f, 0f);
+			Quaternion c = new Quaternion(0.0f, 1.0f, 0.0f, 1.0f);
+			this.networkView.RPC ("setGameObjectColorToRPC", RPCMode.AllBuffered, c);
 		}
-
 
 	}
 
+	// RPC callers
+	public void setGameObjectTo(NetworkViewID viewId)
+	{
+		this.networkView.RPC ("setGameObjectToRPC", RPCMode.AllBuffered, viewId);
+	}
 
+
+	// RPC functions
+	[RPC]
+	public void setGameObjectToRPC(NetworkViewID viewId)
+	{
+		this.playerObject = NetworkView.Find(viewId).gameObject;
+		this.inPlay = true;
+	}
+
+	[RPC]
+	public void setGameObjectColorToRPC(Quaternion c)
+	{
+		this.playerObject.renderer.material.color = new Color(c.x, c.y, c.z, c.w);
+	}
 }
 
 

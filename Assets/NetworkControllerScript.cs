@@ -67,9 +67,13 @@ public class NetworkControllerScript : MonoBehaviour {
 		GameObject newPlayer = (GameObject) Network.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity, 0);
 		GameObject newPlayerObject = (GameObject) Network.Instantiate(prefab, prefab.transform.position, Quaternion.identity, 0);
 		Debug.Log (newPlayer.ToString() + " " + newPlayerObject.ToString ());
+		NetworkViewID objectVID = newPlayerObject.networkView.viewID;
+		NetworkViewID playerVID = newPlayer.networkView.viewID;
 
-		newPlayer.GetComponent<PlayerScript>().setPlayerObject(newPlayerObject);
+		newPlayerObject.GetComponent<PlayerObjectScript>().AssignPlayer(playerVID);
+
 		this.thisPlayer = newPlayer.GetComponent<PlayerScript>();
+		thisPlayer.setGameObjectTo(objectVID);
 	}
 
 	public void OnGUI()
