@@ -39,6 +39,7 @@ public class NetworkControllerScript : MonoBehaviour {
 	public void RefreshHostList()
 	{
 		Debug.Log ("Searching for Games...");
+		this.AvailableGames = new HostData[0];
 		MasterServer.RequestHostList(GameTypeName);
 		this.refreshing = true;
 	}
@@ -92,10 +93,7 @@ public class NetworkControllerScript : MonoBehaviour {
 	// message
 	public void OnDisconnectedFromServer(NetworkDisconnection info)
 	{
-		GameObject.Destroy(this.thisPlayer.playerObject);
-		GameObject.Destroy(this.thisPlayer);
-		GameObject.Destroy (GameObject.Find ("playerObject(Clone)"));
-		GameObject.Destroy (GameObject.Find ("Player(Clone)"));
+		Application.LoadLevel("gameScene");
 	}
 
 	// message
