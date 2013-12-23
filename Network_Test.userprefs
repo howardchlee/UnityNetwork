@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerObjectScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NetworkControllerScript.cs">
     <Files>
-      <File FileName="Assets\NetworkControllerScript.cs" Line="73" Column="3" />
-      <File FileName="Assets\PlayerScript.cs" Line="72" Column="1" />
-      <File FileName="Assets\PlayerObjectScript.cs" Line="20" Column="5" />
+      <File FileName="Assets\NetworkControllerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\PlayerScript.cs" Line="92" Column="1" />
+      <File FileName="Assets\NetworkControllerScript.cs" Line="86" Column="80" />
+      <File FileName="Assets\PlayerObjectScript.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="PlayerObjectScript.cs" selected="True" />
+            <Node name="NetworkControllerScript.cs" selected="True" />
           </Node>
         </State>
       </Pad>

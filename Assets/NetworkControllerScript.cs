@@ -13,9 +13,9 @@ public class NetworkControllerScript : MonoBehaviour {
 	
 	}
 
-	public int MaxConnections = 32;
-	public int Port = 5001;
-	public string GameTypeName = "howardchlee_unique_gamestring";
+	public int MaxConnections = 1;
+	public int Port = 5002;
+	public string GameTypeName = "howardchlee_unique_gamestring_test";
 
 	public GameObject prefab;
 	public GameObject playerPrefab;
@@ -25,13 +25,16 @@ public class NetworkControllerScript : MonoBehaviour {
 	private HostData[] AvailableGames = new HostData[0];
 
 	private PlayerScript thisPlayer;
+	private System.Random r = new System.Random();
 
 	public void CreateGame()
 	{
-		Network.InitializeServer (this.MaxConnections, this.Port, !Network.HavePublicAddress());
+		int port = r.Next () %1000 + 5002;
+		Network.InitializeServer (this.MaxConnections, port, !Network.HavePublicAddress());
 		Debug.Log("Server Created!");
-		MasterServer.RegisterHost(GameTypeName, "game1", "testing!");
+
 	}
+	
 
 	public void RefreshHostList()
 	{
@@ -47,18 +50,36 @@ public class NetworkControllerScript : MonoBehaviour {
 		{
 			Debug.Log ("Registered Server!");
 		}
+		else
+		{
+			Debug.Log (mse.ToString());
+		}
 	}
 
 	// message 
 	public void OnServerInitialized()
 	{
+		int salt = r.Next() %1000;
+		Debug.Log (salt);
+		
+		MasterServer.RegisterHost(GameTypeName, "game" + salt.ToString());
 		InstantiatePlayerObject();
 	}
 
 	// message
 	public void OnConnectedToServer()
 	{
+		Debug.Log (Network.connections.Length + " " + Network.maxConnections);
+		if(Network.connections.Length > Network.maxConnections+1)
+		{
+			Network.Disconnect();
+			return;
+		}
 		InstantiatePlayerObject();
+	}
+
+	void OnFailedToConnect(NetworkConnectionError error) {
+		Debug.Log("Could not connect to server: " + error);
 	}
 
 	// message
@@ -121,9 +142,14 @@ public class NetworkControllerScript : MonoBehaviour {
 
 			for(int i = 0; i < this.AvailableGames.Length; i++)
 			{
-				if(GUI.Button (new Rect(20, 110 + i*50, 150, 40), this.AvailableGames[i].gameName))
+				HostData thisGame = this.AvailableGames[i];
+				if(thisGame.connectedPlayers >= this.MaxConnections+1)
 				{
-					Network.Connect (this.AvailableGames[i]);
+					GUI.Button (new Rect(20, 110 + i*50, 150, 40), thisGame.gameName + "(FULL)");
+				}
+				else if(GUI.Button (new Rect(20, 110 + i*50, 150, 40), thisGame.gameName + "(" + thisGame.connectedPlayers + "/" + thisGame.playerLimit + ")"))
+				{
+					Network.Connect (thisGame);
 				}
 			}
 		}
