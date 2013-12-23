@@ -113,7 +113,7 @@ public class NetworkControllerScript : MonoBehaviour {
 		}
 		else
 		{
-			spawnPosition = new Vector3(0, -8f, -0.5f);
+			spawnPosition = new Vector3(0, -8f , -0.5f);
 		}
 
 		GameObject newPlayer = (GameObject) Network.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity, 0);

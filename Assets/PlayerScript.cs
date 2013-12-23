@@ -17,13 +17,23 @@ public class PlayerScript : MonoBehaviour {
 	public Texture2D progressBarBg;
 	public Texture2D progressBarFull;
 
+	public GameObject bulletPrefab;
+
 	void OnGUI()
 	{
+		if(!inPlay)
+			return;
+		try
+		{
 		Vector3 worldPos = new Vector3(this.playerObject.transform.position.x, this.playerObject.transform.position.y, -0.5f);
 		Vector3 healthBarPos = Camera.current.WorldToScreenPoint(worldPos);
-		Debug.Log (healthBarPos.ToString());
 		GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f, 16.0f), progressBarBg);
 		GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f * health / 100.0f, 16.0f), progressBarFull);
+		}
+		catch
+		{
+
+		}
 	}
 
 	// Update is called once per frame
@@ -88,6 +98,13 @@ public class PlayerScript : MonoBehaviour {
 		{
 			Quaternion c = new Quaternion(0.0f, 1.0f, 0.0f, 1.0f);
 			this.networkView.RPC ("setGameObjectColorToRPC", RPCMode.AllBuffered, c);
+		}
+
+		if(Input.GetKeyDown (KeyCode.Space))
+		{
+			//Debug.Log ("====================>" + this.playerObject.transform.position.ToString ());
+			GameObject b = (GameObject) Network.Instantiate(bulletPrefab, this.playerObject.transform.position, Quaternion.identity, 0);
+			b.GetComponent<BulletScript>().serverBullet = Network.isServer;
 		}
 
 	}
