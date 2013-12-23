@@ -92,7 +92,10 @@ public class NetworkControllerScript : MonoBehaviour {
 	// message
 	public void OnDisconnectedFromServer(NetworkDisconnection info)
 	{
-		Application.Quit ();
+		GameObject.Destroy(this.thisPlayer.playerObject);
+		GameObject.Destroy(this.thisPlayer);
+		GameObject.Destroy (GameObject.Find ("playerObject(Clone)"));
+		GameObject.Destroy (GameObject.Find ("Player(Clone)"));
 	}
 
 	// message
@@ -103,18 +106,9 @@ public class NetworkControllerScript : MonoBehaviour {
 		Network.DestroyPlayerObjects (player);
 		Network.RemoveRPCs (Network.player);
 
-		GameObject bullet = GameObject.Find("Bullet(Clone)");
-		Network.Destroy(bullet);
-		/*while(bullet != null)
-		{
-			Debug.Log (bullet.ToString());
-			Network.Destroy(bullet);
-			bullet = GameObject.Find("Bullet(Clone)");
-		}*/
-
-		Network.Destroy(this.thisPlayer.playerObject);
-		Network.Destroy(this.thisPlayer.gameObject);
-		InstantiatePlayerObject();
+		Network.DestroyPlayerObjects (Network.player);
+		NetworkControllerScript newInstance = GameObject.Find("LocalController").GetComponent<LocalControllerScript>().Initialize().GetComponent<NetworkControllerScript>();
+		newInstance.InstantiatePlayerObject();
 	}
 	
 
