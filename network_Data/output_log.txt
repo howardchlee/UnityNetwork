@@ -11,11 +11,11 @@ Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Man
 Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.046 seconds
+- Completed reload, in  0.048 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-59
+363
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
@@ -31,35 +31,35 @@ Registered Server!
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
+View ID AllocatedID: 152 not found during lookup. Strange behaviour may occur
+ 
+(Filename:  Line: 1676)
+
+Received state update for view id' AllocatedID: 152' but the NetworkView doesn't exist
+ 
+(Filename:  Line: 2469)
+
+View ID AllocatedID: 153 not found during lookup. Strange behaviour may occur
+ 
+(Filename:  Line: 1676)
+
+Received state update for view id' AllocatedID: 153' but the NetworkView doesn't exist
+ 
+(Filename:  Line: 2469)
+
+View ID AllocatedID: 154 not found during lookup. Strange behaviour may occur
+ 
+(Filename:  Line: 1676)
+
+Received state update for view id' AllocatedID: 154' but the NetworkView doesn't exist
+ 
+(Filename:  Line: 2469)
+
 Registered Server!
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
 Player 1 has disconnected.
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
-
-Registered Server!
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
-
-Registered Server!
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
-
-Player 2 has disconnected.
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
-
-Registered Server!
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
-
-Registered Server!
- 
-(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
-
-Player 3 has disconnected.
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 

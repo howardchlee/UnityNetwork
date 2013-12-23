@@ -16,6 +16,17 @@ public class PlayerScript : MonoBehaviour {
 
 	public GameObject bulletPrefab;
 
+	public void ReduceHealthByPublic(int d)
+	{
+		networkView.RPC ("ReduceHealthBy", RPCMode.AllBuffered, d);
+	}
+
+	[RPC]
+	void ReduceHealthBy(int d)
+	{
+		this.health -= d;
+	}
+
 	void OnGUI()
 	{
 		if(!inPlay)
@@ -112,8 +123,10 @@ public class PlayerScript : MonoBehaviour {
 		if(Input.GetKeyDown (KeyCode.Space))
 		{
 			//Debug.Log ("====================>" + this.playerObject.transform.position.ToString ());
-			GameObject b = (GameObject) Network.Instantiate(bulletPrefab, this.playerObject.transform.position, Quaternion.identity, 0);
-			b.GetComponent<BulletScript>().serverBullet = Network.isServer;
+			Vector3 spawnPos = this.playerObject.transform.position;
+			spawnPos.Set(spawnPos.x, spawnPos.y + ((Network.isServer)? -2.01f : 2.01f), spawnPos.z);
+			GameObject b = (GameObject) Network.Instantiate(bulletPrefab, spawnPos, Quaternion.identity, 0);
+			b.GetComponent<BulletScript>().SetIsServerBullet( (Network.isServer)? 1: 0);
 		}
 
 	}

@@ -10,6 +10,18 @@ public class BulletScript : MonoBehaviour {
 	void Start () {
 	
 	}
+
+	public void SetIsServerBullet(int b)
+	{
+		networkView.RPC ("SetIsServerBulletRPC", RPCMode.AllBuffered, b);
+	}
+
+	[RPC]
+	void SetIsServerBulletRPC(int b)
+	{
+		this.serverBullet = (b==1);
+		//Debug.Log ("serverBullet = " + serverBullet.ToString());
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,7 +29,20 @@ public class BulletScript : MonoBehaviour {
 		transform.Translate(0, dir*yspeed*Time.deltaTime, 0);
 		if(this.transform.position.y < -13f || this.transform.position.y > 13f)
 		{
-			Destroy (this.gameObject);
+			if(Network.isServer)
+				Network.Destroy (this.gameObject);
 		}
+	}
+
+	void OnTriggerEnter(Collider c)
+	{
+		if(Network.isClient)
+			return;
+		if(c.gameObject.name != "playerObject(Clone)")
+			return;
+
+		c.gameObject.GetComponent<PlayerObjectScript>().player.ReduceHealthByPublic(20);
+		Network.Destroy(this.gameObject);
+
 	}
 }
