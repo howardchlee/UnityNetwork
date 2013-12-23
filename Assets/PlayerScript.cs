@@ -14,9 +14,6 @@ public class PlayerScript : MonoBehaviour {
 	public int health = 100;
 	public string s = "";
 
-	public Texture2D progressBarBg;
-	public Texture2D progressBarFull;
-
 	public GameObject bulletPrefab;
 
 	void OnGUI()
@@ -25,10 +22,22 @@ public class PlayerScript : MonoBehaviour {
 			return;
 		try
 		{
-		Vector3 worldPos = new Vector3(this.playerObject.transform.position.x, this.playerObject.transform.position.y, -0.5f);
-		Vector3 healthBarPos = Camera.current.WorldToScreenPoint(worldPos);
-		GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f, 16.0f), progressBarBg);
-		GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f * health / 100.0f, 16.0f), progressBarFull);
+			/*Vector3 worldPos = new Vector3(this.playerObject.transform.position.x, this.playerObject.transform.position.y, -0.5f);
+			Vector3 healthBarPos = Camera.current.WorldToScreenPoint(worldPos);
+			GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f, 16.0f), progressBarBg);
+			Rect healthBar = new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f * health / 100.0f, 16.0f);
+			if(networkView.isMine)
+				Debug.Log (healthBar.ToString());
+			GUI.Label (healthBar, progressBarFull);*/
+
+			if((Network.isServer && networkView.isMine) || (Network.isClient && !networkView.isMine))
+			{
+				GUI.Box (new Rect(0f, 0f, Screen.width * health/100.0f, 30), "health");
+			}
+			else
+			{
+				GUI.Box (new Rect(0f, Screen.height-30, Screen.width * health/100.0f, 30), "health");
+			}
 		}
 		catch
 		{
