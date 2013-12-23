@@ -22,8 +22,8 @@ public class PlayerScript : MonoBehaviour {
 		Vector3 worldPos = new Vector3(this.playerObject.transform.position.x, this.playerObject.transform.position.y, -0.5f);
 		Vector3 healthBarPos = Camera.current.WorldToScreenPoint(worldPos);
 		Debug.Log (healthBarPos.ToString());
-		GUI.Box (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f, 16.0f), progressBarBg);
-		GUI.Box (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f * health / 100.0f, 16.0f), progressBarFull);
+		GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f, 16.0f), progressBarBg);
+		GUI.Label (new Rect(healthBarPos.x - 20.0f, Screen.height - healthBarPos.y - 70.0f, 100.0f * health / 100.0f, 16.0f), progressBarFull);
 	}
 
 	// Update is called once per frame
