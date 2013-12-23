@@ -60,6 +60,20 @@ public class NetworkControllerScript : MonoBehaviour {
 	{
 		InstantiatePlayerObject();
 	}
+
+	// message
+	public void OnDisconnectedFromServer(NetworkDisconnection info)
+	{
+		Application.Quit ();
+	}
+
+	// message
+	public void OnPlayerDisconnected(NetworkPlayer player)
+	{
+		Debug.Log("Player " + player.ToString() + " has disconnected.");
+		Network.RemoveRPCs(player);
+		Network.DestroyPlayerObjects (player);
+	}
 	
 
 	public void InstantiatePlayerObject()
@@ -69,6 +83,7 @@ public class NetworkControllerScript : MonoBehaviour {
 		Debug.Log (newPlayer.ToString() + " " + newPlayerObject.ToString ());
 		NetworkViewID objectVID = newPlayerObject.networkView.viewID;
 		NetworkViewID playerVID = newPlayer.networkView.viewID;
+
 
 		newPlayerObject.GetComponent<PlayerObjectScript>().AssignPlayer(playerVID);
 
