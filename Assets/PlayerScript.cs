@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 
 	public GameObject playerObject = null;
-	private bool inPlay = false;
+	public bool inPlay = false;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +25,18 @@ public class PlayerScript : MonoBehaviour {
 	void ReduceHealthBy(int d)
 	{
 		this.health -= d;
+	}
+
+	public void Reset()
+	{
+		networkView.RPC ("ResetRPC", RPCMode.AllBuffered);
+	}
+
+	[RPC]
+	void ResetRPC()
+	{
+		this.health = 100;
+		this.transform.position = new Vector3(0, 8f, -0.5f);
 	}
 
 	void OnGUI()

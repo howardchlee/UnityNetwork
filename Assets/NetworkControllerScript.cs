@@ -24,7 +24,7 @@ public class NetworkControllerScript : MonoBehaviour {
 
 	private HostData[] AvailableGames = new HostData[0];
 
-	private PlayerScript thisPlayer;
+	public PlayerScript thisPlayer;
 	private System.Random r = new System.Random();
 
 	public void CreateGame()
@@ -101,6 +101,20 @@ public class NetworkControllerScript : MonoBehaviour {
 		Debug.Log("Player " + player.ToString() + " has disconnected.");
 		Network.RemoveRPCs(player);
 		Network.DestroyPlayerObjects (player);
+		Network.RemoveRPCs (Network.player);
+
+		GameObject bullet = GameObject.Find("Bullet(Clone)");
+		Network.Destroy(bullet);
+		/*while(bullet != null)
+		{
+			Debug.Log (bullet.ToString());
+			Network.Destroy(bullet);
+			bullet = GameObject.Find("Bullet(Clone)");
+		}*/
+
+		Network.Destroy(this.thisPlayer.playerObject);
+		Network.Destroy(this.thisPlayer.gameObject);
+		InstantiatePlayerObject();
 	}
 	
 

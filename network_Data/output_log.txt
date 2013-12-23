@@ -11,11 +11,40 @@ Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Man
 Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.048 seconds
+- Completed reload, in  0.130 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-363
+Initialize engine version: 4.3.1f1 (cebd4d9b5122)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.2702]
+    Renderer: Intel(R) HD Graphics 4600
+    Vendor:   Intel
+    VRAM:     912 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Howard\Documents\Unity\Network_Test\network_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.072 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Searching for Games...
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+HostListReceived
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Found Available Games.
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+1 0
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
@@ -23,47 +52,23 @@ Player(Clone) (UnityEngine.GameObject) playerObject(Clone) (UnityEngine.GameObje
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-Server Created!
+Searching for Games...
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-Registered Server!
+HostListReceived
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-View ID AllocatedID: 152 not found during lookup. Strange behaviour may occur
- 
-(Filename:  Line: 1676)
-
-Received state update for view id' AllocatedID: 152' but the NetworkView doesn't exist
- 
-(Filename:  Line: 2469)
-
-View ID AllocatedID: 153 not found during lookup. Strange behaviour may occur
- 
-(Filename:  Line: 1676)
-
-Received state update for view id' AllocatedID: 153' but the NetworkView doesn't exist
- 
-(Filename:  Line: 2469)
-
-View ID AllocatedID: 154 not found during lookup. Strange behaviour may occur
- 
-(Filename:  Line: 1676)
-
-Received state update for view id' AllocatedID: 154' but the NetworkView doesn't exist
- 
-(Filename:  Line: 2469)
-
-Registered Server!
+Found Available Games.
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-Player 1 has disconnected.
+1 0
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-Registered Server!
+Player(Clone) (UnityEngine.GameObject) playerObject(Clone) (UnityEngine.GameObject)
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
