@@ -29,7 +29,7 @@ public class NetworkControllerScript : MonoBehaviour {
 
 	public void CreateGame()
 	{
-		int port = r.Next () %1000 + 5002;
+		int port = r.Next () %1000 + 5002;  // to prevent port collision if host spawns multiple games.
 		Network.InitializeServer (this.MaxConnections, port, !Network.HavePublicAddress());
 		Debug.Log("Server Created!");
 
@@ -61,7 +61,8 @@ public class NetworkControllerScript : MonoBehaviour {
 	{
 		int salt = r.Next() %1000;
 		Debug.Log (salt);
-		
+
+		// randomize game name
 		MasterServer.RegisterHost(GameTypeName, "game" + salt.ToString());
 		InstantiatePlayerObject();
 	}
@@ -76,6 +77,12 @@ public class NetworkControllerScript : MonoBehaviour {
 			return;
 		}
 		InstantiatePlayerObject();
+		this.thisPlayer.toggleInPlay();
+	}
+
+	public void OnPlayerConnected()
+	{
+		this.thisPlayer.toggleInPlay();
 	}
 
 	void OnFailedToConnect(NetworkConnectionError error) {
@@ -99,8 +106,18 @@ public class NetworkControllerScript : MonoBehaviour {
 
 	public void InstantiatePlayerObject()
 	{
+		Vector3 spawnPosition = Vector3.zero;
+		if(Network.isServer)
+		{
+			spawnPosition = new Vector3(0, 8f, -0.5f);
+		}
+		else
+		{
+			spawnPosition = new Vector3(0, -8f, -0.5f);
+		}
+
 		GameObject newPlayer = (GameObject) Network.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity, 0);
-		GameObject newPlayerObject = (GameObject) Network.Instantiate(prefab, prefab.transform.position, Quaternion.identity, 0);
+		GameObject newPlayerObject = (GameObject) Network.Instantiate(prefab, spawnPosition, Quaternion.identity, 0);
 		Debug.Log (newPlayer.ToString() + " " + newPlayerObject.ToString ());
 		NetworkViewID objectVID = newPlayerObject.networkView.viewID;
 		NetworkViewID playerVID = newPlayer.networkView.viewID;

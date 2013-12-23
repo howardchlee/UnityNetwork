@@ -49,13 +49,27 @@ public class PlayerScript : MonoBehaviour {
 			playerObject.transform.position = new Vector3(11, playerObject.transform.position.y, -0.5f);
 		}
 
-		if(playerObject.transform.position.y < -11)
+		if(Network.isServer)
 		{
-			playerObject.transform.position = new Vector3(playerObject.transform.position.x, -11, -0.5f);
+			if(playerObject.transform.position.y < 1.5f)
+			{
+				playerObject.transform.position = new Vector3(playerObject.transform.position.x, 1.5f, -0.5f);
+			}
+			else if(playerObject.transform.position.y > 11f)
+			{
+				playerObject.transform.position = new Vector3(playerObject.transform.position.x, 11f, -0.5f);;
+			}
 		}
-		else if(playerObject.transform.position.y > 11f)
+		else
 		{
-			playerObject.transform.position = new Vector3(playerObject.transform.position.x, 11f, -0.5f);;
+			if(playerObject.transform.position.y < -11)
+			{
+				playerObject.transform.position = new Vector3(playerObject.transform.position.x, -11, -0.5f);
+			}
+			else if(playerObject.transform.position.y > -1.5f)
+			{
+				playerObject.transform.position = new Vector3(playerObject.transform.position.x, -1.5f, -0.5f);;
+			}
 		}
 
 		if(Input.GetKey (KeyCode.F))
@@ -72,13 +86,22 @@ public class PlayerScript : MonoBehaviour {
 		this.networkView.RPC ("setGameObjectToRPC", RPCMode.AllBuffered, viewId);
 	}
 
+	public void toggleInPlay()
+	{
+		this.networkView.RPC ("toggleInPlayRPC", RPCMode.AllBuffered);
+	}
 
 	// RPC functions
 	[RPC]
 	public void setGameObjectToRPC(NetworkViewID viewId)
 	{
 		this.playerObject = NetworkView.Find(viewId).gameObject;
-		this.inPlay = true;
+	}
+
+	[RPC]
+	public void toggleInPlayRPC()
+	{
+		this.inPlay = !this.inPlay;
 	}
 
 	[RPC]

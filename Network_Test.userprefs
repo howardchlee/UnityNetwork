@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NetworkControllerScript.cs">
     <Files>
-      <File FileName="Assets\NetworkControllerScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\PlayerScript.cs" Line="92" Column="1" />
-      <File FileName="Assets\NetworkControllerScript.cs" Line="86" Column="80" />
+      <File FileName="Assets\NetworkControllerScript.cs" Line="65" Column="25" />
+      <File FileName="Assets\PlayerScript.cs" Line="1" Column="1" />
       <File FileName="Assets\PlayerObjectScript.cs" Line="1" Column="1" />
     </Files>
     <Pads>
