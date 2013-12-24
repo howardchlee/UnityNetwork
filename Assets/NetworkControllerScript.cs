@@ -64,7 +64,8 @@ public class NetworkControllerScript : MonoBehaviour {
 		Debug.Log (salt);
 
 		// randomize game name
-		MasterServer.RegisterHost(GameTypeName, "game" + salt.ToString());
+		this.GameName = "Game " + salt.ToString();
+		MasterServer.RegisterHost(GameTypeName, GameName);
 		InstantiatePlayerObject();
 	}
 
@@ -106,6 +107,7 @@ public class NetworkControllerScript : MonoBehaviour {
 
 		Network.DestroyPlayerObjects (Network.player);
 		NetworkControllerScript newInstance = GameObject.Find("LocalController").GetComponent<LocalControllerScript>().Initialize().GetComponent<NetworkControllerScript>();
+		newInstance.GameName = this.GameName;
 		newInstance.InstantiatePlayerObject();
 	}
 	
@@ -135,11 +137,13 @@ public class NetworkControllerScript : MonoBehaviour {
 		thisPlayer.setGameObjectTo(objectVID);
 	}
 
+	private string GameName = "";
+
 	public void OnGUI()
 	{
-		if(Network.isServer)
+		if(Network.isServer && Network.connections.Length == 0)
 		{
-			GUI.Box (new Rect(10, 10, 80, 40), Network.connections.Length.ToString());
+			GUI.Box (new Rect(20, 20, Screen.width - 40, Screen.height-40), "WAITING FOR A CLIENT TO CONNECT.  THE NAME OF THIS GAME IS " + this.GameName);
 		}
 
 		if(!Network.isClient && !Network.isServer)
